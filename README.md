@@ -1,2 +1,2 @@
-# docker_php_dev
-My configuration for php development with docker
+# Docker + PHP + MariaDB
+My configuration for php + mariadb with docker
