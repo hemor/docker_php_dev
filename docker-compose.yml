@@ -13,21 +13,26 @@ services:
         depends_on:
             - php
             - app
+        restart: "${APP_RESTART}"
 
     php:
         build: ./php/
         expose:
             - "9000"
+        volumes:
+            - ./php/php.ini:/usr/local/etc/php/php.ini:ro
         volumes_from:
             - app:rw
         depends_on:
             - app
+        restart: "${APP_RESTART}"
 
     app:
         image: php:7-fpm
         volumes:
             - "${APP_ROOT}:/var/www/html:rw"
         command: 'true'
+        restart: "${APP_RESTART}"
 
     database:
         image: mariadb:latest
@@ -40,6 +45,7 @@ services:
             MYSQL_DATABASE: "${DB_NAME}"
             MYSQL_USER: "${DB_USER}"
             MYSQL_PASSWORD: "${DB_PASSWORD}"
+        restart: "${APP_RESTART}"
 
 volumes:
     data:
