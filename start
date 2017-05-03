@@ -1,1 +1,14 @@
-docker-compose up -d
+docker-compose up -d &&
+declare -A v=( )
+while IFS='=' read -r key value; do
+	v[$key]=$value
+done < .env
+
+app_url="http://localhost:${v['APP_PORT']}";
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+	xdg-open $app_url > /dev/null;
+elif [ "$(uname)" == "Darwin" ]; then
+	open $app_url;
+else
+	echo "App now available at $app_url";
+fi
