@@ -1,6 +1,13 @@
 version: '2.1'
 
 services:
+    workspace:
+        build: ./workspace/
+        volumes_from:
+            - app:rw
+        depends_on:
+            - app
+        restart: "${APP_RESTART}"
     nginx:
         image: nginx:latest
         ports:
