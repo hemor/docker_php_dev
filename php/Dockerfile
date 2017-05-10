@@ -20,8 +20,5 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
 # Install Node
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
-	&& source $HOME/.nvm/nvm.sh \
-	&& nvm install --lts=boron \
-	&& nvm alias default 6 \
-	&& nvm use default
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash
+RUN apt-get install -y nodejs
