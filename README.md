@@ -1,2 +1,2 @@
-# Docker + PHP + MariaDB
-My configuration for php + mariadb with docker
+# Docker + PHP + Mysql
+My configuration for php + mysql with docker
