@@ -35,7 +35,7 @@ services:
         restart: "${APP_RESTART}"
 
     database:
-        image: mariadb:latest
+        image: mysql:latest
         expose:
             - "3306"
         volumes:
